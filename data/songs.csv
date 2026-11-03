@@ -9,3 +9,13 @@ id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness
 8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,0.73,0.22
 9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,0.60,0.78
 10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,0.82,0.35
+11,Afterglow Rush,Neon Echo,edm,euphoric,0.95,128,0.80,0.90,0.04
+12,Basement Tapes,LoRoom,hip hop,nostalgic,0.55,88,0.52,0.78,0.40
+13,Blue Hour Whiskey,Slow Stereo,blues,melancholic,0.38,70,0.30,0.45,0.80
+14,Iron Cathedral,Ashfall,metal,aggressive,0.97,168,0.25,0.45,0.03
+15,Velvet Letters,Amara June,r&b,romantic,0.50,92,0.68,0.70,0.45
+16,Dust Road Home,Willow Creek Band,country,hopeful,0.60,104,0.74,0.62,0.65
+17,Glass Garden Nocturne,Clara Vey,classical,peaceful,0.18,66,0.42,0.20,0.97
+18,Salt and Sunlight,Coastline Kids,reggae,carefree,0.58,82,0.83,0.80,0.50
+19,Paper Boats,Hollow Pines,folk,sad,0.30,76,0.22,0.38,0.93
+20,Calle Dorada,Los Faroles,latin,energetic,0.86,100,0.88,0.92,0.25
