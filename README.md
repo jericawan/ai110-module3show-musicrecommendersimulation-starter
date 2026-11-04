@@ -234,6 +234,189 @@ Rank  balanced               mood_first             vibe_first             disco
 #5    Afterglow Rush         Afterglow Rush         Afterglow Rush         Afterglow Rush   
 
 ---
+## 3 profiles: 
+################################################################
+ USER PROFILE: HIGH-ENERGY POP
+================================================================
+   genres         pop, indie pop
+   moods          happy, euphoric
+   artists        Max Pulse
+   energy         0.9
+   valence        0.85
+   danceability   0.85
+   acousticness   0.1
+
+================================================================
+ BALANCED STRATEGY
+ Genre leads, with vibe, artist, and mood as supporting signals.
+================================================================
+
+ #1  Gym Hero                                  8.38 / 10
+     Max Pulse · pop · intense
+     █████████████████░░░
+       ✓ matches your top genre (pop)
+       ✓ closely matches the vibe you like
+       ✓ is by Max Pulse, one of your favorite artists
+
+ #2  Sunrise City                              7.86 / 10
+     Neon Echo · pop · happy
+     ████████████████░░░░
+       ✓ matches your top genre (pop)
+       ✓ closely matches the vibe you like
+       ✓ has your top mood (happy)
+
+ #3  Rooftop Lights                            6.11 / 10
+     Indigo Parade · indie pop · happy
+     ████████████░░░░░░░░
+       ✓ matches your second genre (indie pop)
+       ✓ closely matches the vibe you like
+       ✓ has your top mood (happy)
+
+ #4  Afterglow Rush                            3.27 / 10
+     Neon Echo · edm · euphoric
+     ███████░░░░░░░░░░░░░
+       ✓ closely matches the vibe you like
+       ✓ has your second mood (euphoric)
+
+ #5  Calle Dorada                              2.32 / 10
+     Los Faroles · latin · energetic
+     █████░░░░░░░░░░░░░░░
+       ✓ closely matches the vibe you like
+
+----------------------------------------------------------------
+
+=== Strategy comparison ===
+
+Rank  balanced               mood_first             vibe_first             discovery             
+--------------------------------------------------------------------------------------------------
+#1    Gym Hero               Sunrise City           Sunrise City           Sunrise City          
+#2    Sunrise City           Rooftop Lights         Rooftop Lights         Rooftop Lights        
+#3    Rooftop Lights         Afterglow Rush         Gym Hero               Afterglow Rush        
+#4    Afterglow Rush         Gym Hero               Afterglow Rush         Gym Hero              
+#5    Calle Dorada           Calle Dorada           Calle Dorada           Calle Dorada          
+
+################################################################
+ USER PROFILE: CHILL LOFI
+================================================================
+   genres         lofi, ambient
+   moods          chill, focused
+   artists        LoRoom
+   energy         0.35
+   valence        0.6
+   danceability   0.55
+   acousticness   0.85
+
+================================================================
+ BALANCED STRATEGY
+ Genre leads, with vibe, artist, and mood as supporting signals.
+================================================================
+
+ #1  Midnight Coding                           9.80 / 10
+     LoRoom · lofi · chill
+     ████████████████████
+       ✓ matches your top genre (lofi)
+       ✓ closely matches the vibe you like
+       ✓ is by LoRoom, one of your favorite artists
+       ✓ has your top mood (chill)
+
+ #2  Focus Flow                                9.29 / 10
+     LoRoom · lofi · focused
+     ███████████████████░
+       ✓ matches your top genre (lofi)
+       ✓ closely matches the vibe you like
+       ✓ is by LoRoom, one of your favorite artists
+       ✓ has your second mood (focused)
+
+ #3  Library Rain                              7.97 / 10
+     Paper Lanterns · lofi · chill
+     ████████████████░░░░
+       ✓ matches your top genre (lofi)
+       ✓ closely matches the vibe you like
+       ✓ has your top mood (chill)
+
+ #4  Spacewalk Thoughts                        6.19 / 10
+     Orbit Bloom · ambient · chill
+     ████████████░░░░░░░░
+       ✓ matches your second genre (ambient)
+       ✓ closely matches the vibe you like
+       ✓ has your top mood (chill)
+
+ #5  Basement Tapes                            3.90 / 10
+     LoRoom · hip hop · nostalgic
+     ████████░░░░░░░░░░░░
+       ✓ is fairly close to the vibe you like
+       ✓ is by LoRoom, one of your favorite artists
+
+----------------------------------------------------------------
+
+=== Strategy comparison ===
+
+Rank  balanced               mood_first             vibe_first             discovery             
+--------------------------------------------------------------------------------------------------
+#1    Midnight Coding        Midnight Coding        Midnight Coding        Library Rain          
+#2    Focus Flow             Library Rain           Library Rain           Midnight Coding       
+#3    Library Rain           Spacewalk Thoughts     Focus Flow             Spacewalk Thoughts    
+#4    Spacewalk Thoughts     Focus Flow             Spacewalk Thoughts     Focus Flow            
+#5    Basement Tapes         Basement Tapes         Basement Tapes         Coffee Shop Stories   
+
+################################################################
+ USER PROFILE: DEEP INTENSE ROCK
+================================================================
+   genres         rock, metal
+   moods          intense, aggressive
+   artists        Voltline
+   energy         0.92
+   valence        0.35
+   danceability   0.55
+   acousticness   0.08
+
+================================================================
+ BALANCED STRATEGY
+ Genre leads, with vibe, artist, and mood as supporting signals.
+================================================================
+
+ #1  Storm Runner                              9.83 / 10
+     Voltline · rock · intense
+     ████████████████████
+       ✓ matches your top genre (rock)
+       ✓ closely matches the vibe you like
+       ✓ is by Voltline, one of your favorite artists
+       ✓ has your top mood (intense)
+
+ #2  Iron Cathedral                            5.61 / 10
+     Ashfall · metal · aggressive
+     ███████████░░░░░░░░░
+       ✓ matches your second genre (metal)
+       ✓ closely matches the vibe you like
+       ✓ has your second mood (aggressive)
+
+ #3  Gym Hero                                  3.51 / 10
+     Max Pulse · pop · intense
+     ███████░░░░░░░░░░░░░
+       ✓ closely matches the vibe you like
+       ✓ has your top mood (intense)
+
+ #4  Night Drive Loop                          2.11 / 10
+     Neon Echo · synthwave · moody
+     ████░░░░░░░░░░░░░░░░
+       ✓ closely matches the vibe you like
+
+ #5  Afterglow Rush                            1.96 / 10
+     Neon Echo · edm · euphoric
+     ████░░░░░░░░░░░░░░░░
+       ✓ is fairly close to the vibe you like
+
+----------------------------------------------------------------
+
+=== Strategy comparison ===
+
+Rank  balanced               mood_first             vibe_first             discovery             
+--------------------------------------------------------------------------------------------------
+#1    Storm Runner           Storm Runner           Storm Runner           Storm Runner          
+#2    Iron Cathedral         Gym Hero               Iron Cathedral         Gym Hero              
+#3    Gym Hero               Iron Cathedral         Gym Hero               Iron Cathedral        
+#4    Night Drive Loop       Night Drive Loop       Night Drive Loop       Night Drive Loop      
+#5    Afterglow Rush         Afterglow Rush         Afterglow Rush         Afterglow Rush        
 
 ## Experiments You Tried
 
@@ -242,6 +425,8 @@ Use this section to document the experiments you ran. For example:
 - What happened when you changed the weight on genre from 2.0 to 0.5
 - What happened when you added tempo or valence to the score
 - How did your system behave for different types of users
+
+I commented out the mood check for the scoring equation. When we decided to remove the mood, some of the genres get scored differently since it doesn't include the "mood". The order of the songs get switched for the test profiles created. But there is noticable change in the different methods of raking, as before we would have different songs depending on the strategy comparison but now we get the same songs in the same order. 
 
 ---
 
@@ -257,6 +442,9 @@ Examples:
 
 You will go deeper on this in your model card.
 
+- genre bias
+- catelog is too small and uneven 
+
 ---
 
 ## Reflection
@@ -270,5 +458,5 @@ Write 1 to 2 paragraphs here about what you learned:
 - about how recommenders turn data into predictions
 - about where bias or unfairness could show up in systems like this
 
-
+What I learned is the significance of bias that occurs while building AI systems. These systems are based off of the user experience and it may contain unintentional bias depending on who the person is or where they're from. Whoever is first creating the system would base it on what they think is "necessary" for the recommender, but may not consider the opinion of others who may think differently. This project made me understand the importance of data as recommenders are unable to properly run without a sufficent amount of data. 
 

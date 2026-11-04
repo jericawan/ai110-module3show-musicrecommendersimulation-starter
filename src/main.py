@@ -9,9 +9,60 @@ You will implement the functions in recommender.py:
 - recommend_songs
 """
 
-from src.recommender import load_songs, recommend_songs, score_song, STRATEGIES
+import sys
+
+from src.recommender import load_songs, recommend_songs, score_song, STRATEGIES, DEFAULT_STRATEGY
 
 WIDTH = 64
+
+# Three distinct listener types, with every preference filled in
+USER_PROFILES = {
+    "High-Energy Pop": {
+        "genres": ["pop", "indie pop"],
+        "moods": ["happy", "euphoric"],
+        "artists": ["Max Pulse"],
+        "energy": 0.90,
+        "valence": 0.85,
+        "danceability": 0.85,
+        "acousticness": 0.10,
+    },
+    "Chill Lofi": {
+        "genres": ["lofi", "ambient"],
+        "moods": ["chill", "focused"],
+        "artists": ["LoRoom"],
+        "energy": 0.35,
+        "valence": 0.60,
+        "danceability": 0.55,
+        "acousticness": 0.85,
+    },
+    "Deep Intense Rock": {
+        "genres": ["rock", "metal"],
+        "moods": ["intense", "aggressive"],
+        "artists": ["Voltline"],
+        "energy": 0.92,
+        "valence": 0.35,
+        "danceability": 0.55,
+        "acousticness": 0.08,
+    },
+}
+
+# Edge-case profiles meant to trick the scoring logic.
+# Each entry: (user_prefs, k, strategy name or None for the default)
+ADVERSARIAL_PROFILES = {
+    "Empty profile":                   ({}, 5, None),
+    "Out-of-range energy (5.0)":       ({"genre": "pop", "energy": 5.0}, 5, None),
+    "NaN energy":                      ({"genre": "lofi", "energy": float("nan")}, 5, None),
+    "Genres as a string, not a list":  ({"genres": "pop", "energy": 0.8}, 5, None),
+    "Negative k (-1)":                 ({"genre": "pop"}, -1, None),
+    "Unknown genre (k-pop)":           ({"genre": "k-pop", "mood": "happy", "energy": 0.8}, 5, None),
+    "Trailing space ('Pop ')":         ({"genre": "Pop ", "mood": "happy"}, 5, None),
+    "Conflict: metal + peaceful":      ({"genre": "metal", "mood": "peaceful",
+                                         "energy": 0.1, "acousticness": 0.95}, 5, None),
+    "Synonym mood (sad vs melancholic)": ({"genre": "blues", "mood": "sad", "energy": 0.35},
+                                          5, "mood_first"),
+    "Artist only (Neon Echo)":         ({"artists": ["Neon Echo"]}, 5, None),
+    "Third genre ignored":             ({"genres": ["lofi", "pop", "rock"]}, 5, None),
+}
 
 
 def print_songs(songs) -> None:
@@ -26,10 +77,10 @@ def print_songs(songs) -> None:
               f"{song['danceability']:>6.2f} {song['acousticness']:>8.2f}")
 
 
-def print_profile(user_prefs) -> None:
+def print_profile(name, user_prefs) -> None:
     """Prints the user's input preferences."""
-    print("\n" + "=" * WIDTH)
-    print(" USER PROFILE")
+    print("\n" + "#" * WIDTH)
+    print(f" USER PROFILE: {name.upper()}")
     print("=" * WIDTH)
     for key, value in user_prefs.items():
         if isinstance(value, list):
@@ -76,30 +127,52 @@ def print_comparison(results_by_strategy, k: int) -> None:
         print(f"{'#' + str(i + 1):<5} " + " ".join(f"{title:<22}" for title in row))
 
 
+def run_adversarial(songs) -> None:
+    """Runs each edge-case profile and prints its results as a compact table."""
+    print("\n" + "#" * WIDTH)
+    print(" ADVERSARIAL / EDGE-CASE PROFILES")
+    print("#" * WIDTH)
+
+    for name, (user_prefs, k, strategy) in ADVERSARIAL_PROFILES.items():
+        label = strategy or DEFAULT_STRATEGY
+        print(f"\n== {name}  [k={k}, {label}] ==")
+        print(f"   prefs: {user_prefs}")
+        try:
+            results = recommend_songs(user_prefs, songs, k=k, strategy=strategy)
+        except Exception as error:  # show the crash instead of stopping the run
+            print(f"   CRASH: {type(error).__name__}: {error}")
+            continue
+
+        print(f"   returned {len(results)} song(s)")
+        for rank, (song, score, explanation) in enumerate(results, start=1):
+            print(f"   #{rank:<3}{score:>7.2f}  {song['title']:<22} "
+                  f"{song['genre']:<10} {song['mood']:<12}")
+            print(f"         {explanation}")
+
+
 def main() -> None:
     songs = load_songs("data/songs.csv")
+
+    # `python -m src.main adversarial` runs only the edge cases
+    if "adversarial" in sys.argv[1:]:
+        run_adversarial(songs)
+        return
+
     print_songs(songs)
     k = 5
 
-    # Default profile: pop / happy
-    user_prefs = {
-        "genre": "pop",
-        "mood": "happy",
-        "energy": 0.8,
-        "valence": 0.8,
-        "danceability": 0.8,
-        "acousticness": 0.2,
-    }
-    print_profile(user_prefs)
+    for name, user_prefs in USER_PROFILES.items():
+        print_profile(name, user_prefs)
 
-    # Run the same user through every weighting strategy to compare rankings
-    results_by_strategy = {}
-    for strategy in STRATEGIES.values():
-        recommendations = recommend_songs(user_prefs, songs, k=k, strategy=strategy)
-        results_by_strategy[strategy.name] = recommendations
-        print_rankings(strategy, recommendations, user_prefs)
+        # Run the user through every strategy; show full cards for the default one
+        results_by_strategy = {}
+        for strategy in STRATEGIES.values():
+            recommendations = recommend_songs(user_prefs, songs, k=k, strategy=strategy)
+            results_by_strategy[strategy.name] = recommendations
+            if strategy.name == DEFAULT_STRATEGY:
+                print_rankings(strategy, recommendations, user_prefs)
 
-    print_comparison(results_by_strategy, k)
+        print_comparison(results_by_strategy, k)
 
 
 if __name__ == "__main__":
